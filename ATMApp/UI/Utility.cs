@@ -1,14 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ATMApp.UI
 {
     public static class Utility
     {
+        private static long tranId;
+        private static CultureInfo culture = new CultureInfo("IG-NG");
+
+        public static long GetTransactionId()
+        {
+            return ++tranId;
+        }
         public static string GetSecretInput(string prompt)
         {
             bool isPrompt = true;
@@ -85,6 +88,11 @@ namespace ATMApp.UI
         {
             Console.WriteLine("\n\nPress Enter to continue...\n");
             Console.ReadLine();
+        }
+
+        public static string FormatAmount(decimal amt)
+        {
+            return String.Format(culture, "{0:C2}", amt);
         }
     }
 }
