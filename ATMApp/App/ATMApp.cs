@@ -2,10 +2,6 @@
 using ATMApp.Domain.Enums;
 using ATMApp.Domain.Interfaces;
 using ATMApp.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 
 namespace ATMApp
 {
@@ -39,8 +35,8 @@ namespace ATMApp
             {
                 new UserAccount{Id=1, FullName = "Ajete Krasniqi", AccountNumber=123456,CardNumber =321321, CardPin=123123,AccountBalance=50000.00m,IsLocked=false},
                 new UserAccount{Id=2, FullName = "Miranda Osmanaj", AccountNumber=456789,CardNumber =654654, CardPin=456456,AccountBalance=4000.00m,IsLocked=false},
-                new UserAccount{Id=3, FullName = "Edi Krasniqi", AccountNumber=123555,CardNumber =987987, CardPin=789789,AccountBalance=2000.00m,IsLocked=false},
-                new UserAccount{Id=4, FullName = "Muhamed Elezaj", AccountNumber=123555,CardNumber =987987, CardPin=789789,AccountBalance=2000.00m,IsLocked=false},
+                new UserAccount{Id=3, FullName = "Edi Krasniqi", AccountNumber=123555,CardNumber =987987, CardPin=789789,AccountBalance=2000.00m,IsLocked=true},
+                new UserAccount{Id=4, FullName = "Muhamed Elezaj", AccountNumber=135790,CardNumber =135790, CardPin=789789,AccountBalance=2000.00m,IsLocked=false},
             };
             _listOfTransactions = new List<Transaction>();
         }
@@ -268,7 +264,7 @@ namespace ATMApp
                 {
                     table.AddRow(tran.TransactionId, tran.TransactionDate, tran.TransactionType, tran.Descriprion, tran.TransactionAmount);
                 }
-                table.Options.EnableCount = false;
+                table.Options = false;
                 table.Write();
                 Utility.PrintMessage($"You have {filteredTransactionList.Count} transaction(s)", true);
             }
